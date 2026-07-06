@@ -30,11 +30,7 @@ PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true # jank - for inkOS
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.system.ota.json_url=https://raw.githubusercontent.com/MP01-LineageOS/MP01-LineageGSI/15/ota.json \
-    ro.system.treble.presets=https://raw.githubusercontent.com/MP01-LineageOS/treble_presets/09fdae135930b553c54aba7aa9a07b105132b6ff/infos.json \
-    qemu.hw.mainkeys=1
-
-# MP01 has 3 physical nav buttons; hide the redundant software nav bar without
-# switching to gesture nav (qemu.hw.mainkeys=1 => hasNavigationBar() is false).
+    ro.system.treble.presets=https://raw.githubusercontent.com/MP01-LineageOS/treble_presets/09fdae135930b553c54aba7aa9a07b105132b6ff/infos.json
 
 LINEAGE_BUILDTYPE := MICROG
 LINEAGE_EXTRAVERSION := -MICROG-EXT4

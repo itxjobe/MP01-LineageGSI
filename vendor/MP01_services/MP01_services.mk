@@ -1,6 +1,7 @@
 PRODUCT_PACKAGES += \
     MP01_eink_server \
-    MP01AccessibilityService
+    MP01AccessibilityService \
+    MP01NavBarOverlay
 
 PRODUCT_COPY_FILES += \
     vendor/MP01_services/mp_keyboard/aw9523b-key.idc:system/usr/idc/aw9523b-key.idc \

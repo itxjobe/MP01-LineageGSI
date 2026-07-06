@@ -1,0 +1,10 @@
+// Static framework overlay: the MP01 has 3 physical navigation buttons, so hide
+// the redundant software navigation bar (config_showNavigationBar=false) without
+// switching to gesture navigation. Platform-signed so it may override framework
+// resources; static so it is always applied.
+runtime_resource_overlay {
+    name: "MP01NavBarOverlay",
+    sdk_version: "current",
+    product_specific: true,
+    certificate: "platform",
+}
