@@ -31,9 +31,10 @@ workspace_paths_helper="${CODEX_HOME:-$HOME/.codex}/lib/codex_container/workspac
 if [[ -f "$workspace_paths_helper" ]]; then
     source "$workspace_paths_helper"
 else
-    echo "ERROR: Missing Codex workspace path helper: $workspace_paths_helper" >&2
-    echo "Run this script through /Users/j/.codex/bin/codex-in-container after redeploying the container system." >&2
-    exit 1
+    # No Codex container: fall back to portable helpers so the build runs on a
+    # plain Linux host (e.g. the ROG).
+    source "$script_dir/scripts/portable-workspace.sh"
+    export MP01_ALLOW_NON_WORKSPACE_BUILD="${MP01_ALLOW_NON_WORKSPACE_BUILD:-1}"
 fi
 
 if [[ -z "$manifest_repo_override" && -d "$script_dir/../treble_manifest/.git" ]]; then
