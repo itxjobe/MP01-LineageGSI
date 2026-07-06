@@ -7,6 +7,11 @@ $(call inherit-product, vendor/partner_gms/products/gms.mk)
 $(call inherit-product, device/phh/treble/lineage.mk)
 $(call inherit-product, vendor/MP01_services/MP01_services.mk)
 
+# Use our static e-ink boot animation instead of the generated LineageOS one.
+# (LineageOS's lineage_bootanimation soong module consumes TARGET_BOOTANIMATION
+# as its prebuilt source, so this replaces rather than conflicts with it.)
+TARGET_BOOTANIMATION := vendor/MP01_services/bootanimation/bootanimation.zip
+
 PRODUCT_NAME := treble_arm64_bmN
 PRODUCT_DEVICE := tdgsi_arm64_ab
 PRODUCT_BRAND := Minimal
