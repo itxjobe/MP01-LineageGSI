@@ -1,11 +1,12 @@
 #!/bin/bash
 
-: "${MP01_RELEASE_REPO:=MP01-LineageOS/MP01-LineageGSI}"
-: "${MP01_SUPPORT_REPO:=https://github.com/MP01-LineageOS/MP01-LineageGSI.git}"
+: "${MP01_RELEASE_REPO:=itxjobe/MP01-LineageGSI}"
+: "${MP01_SUPPORT_REPO:=https://github.com/itxjobe/MP01-LineageGSI.git}"
 : "${MP01_SUPPORT_BRANCH:=15}"
+# Manifest still sourced from the upstream fork until we mirror it under itxjobe.
 : "${MP01_MANIFEST_REPO:=https://github.com/MP01-LineageOS/treble_manifest.git}"
 : "${MP01_MANIFEST_BRANCH:=15-los-qpr2}"
-: "${MP01_OTA_JSON_URL:=https://raw.githubusercontent.com/MP01-LineageOS/MP01-LineageGSI/15/ota.json}"
+: "${MP01_OTA_JSON_URL:=https://raw.githubusercontent.com/itxjobe/MP01-LineageGSI/15/ota.json}"
 
 : "${MP01_REPO_LAUNCHER_URL:=https://storage.googleapis.com/git-repo-downloads/repo}"
 : "${MP01_REPO_LAUNCHER_SHA256:=11bc6893e9e0c0940fc1cc95b75c645f9a29fca879d89ceaa898a4d761a2add7}"

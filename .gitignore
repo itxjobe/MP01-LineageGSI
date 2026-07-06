@@ -1,2 +1,12 @@
 .tar.gz
 .img
+
+# P0 device-safety local artifacts (never commit blobs)
+/backup/*.img
+/backup/*.bin
+/backup/dump/
+mp01-backups/
+
+# mtkclient scratch files (created in CWD when run)
+/.state
+/hwparam.json
