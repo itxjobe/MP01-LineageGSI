@@ -7,7 +7,7 @@ import android.util.Log
 
 object MP01Defaults {
     private const val TAG = "MP01Defaults"
-    private const val DEFAULTS_VERSION = 1
+    private const val DEFAULTS_VERSION = 2
     private const val KEY_DEFAULTS_VERSION = "mp01_defaults_version"
     private const val KEY_FORCE_DEFAULTS = "persist.mp01.defaults.force"
     private const val KEY_UI_NIGHT_MODE = "ui_night_mode"
@@ -38,6 +38,11 @@ object MP01Defaults {
                 Log.e(TAG, "Failed to set MP01 light mode default")
                 return false
             }
+
+            // e-Ink ghosts badly on slide/fade transitions: disable UI animations by default.
+            Settings.Global.putFloat(resolver, Settings.Global.WINDOW_ANIMATION_SCALE, 0f)
+            Settings.Global.putFloat(resolver, Settings.Global.TRANSITION_ANIMATION_SCALE, 0f)
+            Settings.Global.putFloat(resolver, Settings.Global.ANIMATOR_DURATION_SCALE, 0f)
 
             val wroteVersion = Settings.Secure.putInt(
                 resolver,

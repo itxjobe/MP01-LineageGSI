@@ -101,6 +101,12 @@ class MP01AccessibilityService : AccessibilityService(),
 
     private val handler = Handler(Looper.getMainLooper())
 
+    // Full e-ink refresh used to clear ghosting when a SystemUI panel (the
+    // notification shade / quick settings) opens. Debounced via the handler.
+    private val systemUiClearRunnable = Runnable {
+        commandRunner.runCommands(arrayOf(Commands.FORCE_CLEAR))
+    }
+
     override fun onCreate() {
         super.onCreate()
         commandRunner =
@@ -337,6 +343,16 @@ class MP01AccessibilityService : AccessibilityService(),
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
+        if (event?.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED
+            && event.packageName == "com.android.systemui"
+            && sharedPreferences.getBoolean("refresh_on_system_ui", true)
+        ) {
+            // The notification shade / quick settings are SystemUI windows, not
+            // activities, so the per-app refresh below never fires for them and
+            // they ghost heavily on e-ink. Force a full clear once they render.
+            handler.removeCallbacks(systemUiClearRunnable)
+            handler.postDelayed(systemUiClearRunnable, 180)
+        }
         event.letPackageNameClassName { pkgName, clsName ->
             val componentName = ComponentName(
                 pkgName,

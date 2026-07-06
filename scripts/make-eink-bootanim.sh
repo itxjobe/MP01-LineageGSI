@@ -25,7 +25,7 @@ font="$(fc-match -f '%{file}' 'DejaVu Sans' 2>/dev/null || true)"
 convert -size "${w}x${h}" xc:white -gravity center \
     ${font:+-font "$font"} \
     -pointsize 46 -fill black     -annotate +0-24 "$title" \
-    -pointsize 22 -fill '#555555'  -annotate +0+30 "$subtitle" \
+    -pointsize 22 -fill '#333333'  -annotate +0+30 "$subtitle" \
     "$tmp/part0/000.png"
 
 # desc.txt: WIDTH HEIGHT FPS, then one part looped forever (p 0) until boot done.
